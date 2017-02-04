@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Pia Kim"]
   spec.email         = ["pkim2320@gmail.com"]
 
-  spec.summary       = "The New York Times Best Sellers list"
-  spec.description   = "Provides a ranked list of books being sold in the United States"
+  spec.summary       = "The New York Times Best Sellers list if books"
+  spec.description   = "Provides a ranked list of books sold in the U.S."
   spec.homepage      = "https://github.com/mikaip/best-sellers-cli-gem"
   spec.license       = "MIT"
 
