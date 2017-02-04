@@ -1,5 +1,10 @@
-require "best_sellers/version"
+require_relative "best_sellers/version"
 
-module BestSellers
-  # Your code goes here...
-end
+# module BestSellers
+#   # Your code goes here...
+# end
+require_relative './best_sellers/book'
+require_relative './best_sellers/cli'
+
+
+#this file acts as my environment 
