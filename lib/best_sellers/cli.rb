@@ -4,7 +4,7 @@
 class BestSellers::CLI
 
   def call
-    puts "Welcome to The New York Times Best Sellers List"
+    puts "Welcome to The New York Times Best Sellers List for Trade Paperback Fiction"
     list_books
     menu
     goodbye

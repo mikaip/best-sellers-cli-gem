@@ -1,3 +1,7 @@
+require 'open-uri'
+require 'nokogiri'
+require 'pry'
+
 require_relative "best_sellers/version"
 
 # module BestSellers
@@ -7,4 +11,4 @@ require_relative './best_sellers/book'
 require_relative './best_sellers/cli'
 
 
-#this file acts as my environment 
+#this file acts as my environment

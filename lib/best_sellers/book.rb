@@ -1,6 +1,6 @@
 class BestSellers::Book
 
-  attr_accessor :title, :author, :weeks_on_list
+  attr_accessor :title, :author, :published_date
 
   def self.today
     #I should return list of books
@@ -28,8 +28,16 @@ class BestSellers::Book
   def self.scrape_books
     books = []
 
+    books << self.scrape_nytimes
+
 
     books
+  end
+
+  def self.scrape_nytimes
+    doc = Nokogiri::HTML(open("http://www.barnesandnoble.com/b/the-new-york-times-bestsellers-trade-paperback-fiction/_/N-1p3v"))
+    binding.pry
+
   end
 
 end
