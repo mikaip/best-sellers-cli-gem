@@ -13,6 +13,7 @@ class BestSellers::CLI
   def list_books
     puts "The NYTimes List:"
     @books = BestSellers::Book.today
+    # binding.pry
     @books.each.with_index(1) do |book, i|
       puts "#{i}. #{book.title} by #{book.author}"
     end
