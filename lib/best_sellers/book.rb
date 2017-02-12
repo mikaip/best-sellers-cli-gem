@@ -46,7 +46,13 @@ class BestSellers::Book
         book_2.author = doc.css("span.contributors a")[1].text.strip
         book_2.published_date = doc.css("span.publ-date")[1].text.gsub("(", "").gsub(")", "").strip
 
-        [book_1, book_2]
+        book_3 = self.new
+          book_3.title = doc.search("p.product-info-title a")[2].text
+          book_3.author = doc.css("span.contributors a")[2].text.strip
+          book_3.published_date = doc.css("span.publ-date")[2].text.gsub("(", "").gsub(")", "").strip
+
+        [book_1, book_2, book_3]
+        binding.pry
     # self.scrape_books
   end
 
@@ -85,6 +91,29 @@ class BestSellers::Book
 
 
 
-  end
 
+
+end
+
+def self.book_titles
+  @@book_titles = doc.search("p.product-info-title a").text
+end
+
+def self.book_authors
+  @@book_authors = doc.search("span.contributors a").text
+end
+
+def self.book_dates
+  @@book_dates = doc.css("span.publ-date").text
+end
+
+
+
+
+
+
+def self.scrape_all
+  data = [
+
+  ]
 end
