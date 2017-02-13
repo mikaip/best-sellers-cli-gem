@@ -4,31 +4,32 @@
 class BestSellers::CLI
 
   def call
-    puts "Welcome to The New York Times Best Sellers List for Trade Paperback Fiction"
+    BestSellers::Book.scrape_all #prime the class
+    puts "Welcome to The New York Times Best Sellers List"
     list_books
     menu
     goodbye
   end
 
   def list_books
-    puts "The NYTimes List:"
-    @books = BestSellers::Book.today
-    # binding.pry
-    @books.each.with_index(1) do |book, i|
+    puts "Here are the top ten books in Trade Paperback Fiction. Which book would you like to learn more information about?"
+
+    BestSellers::Book.all.each.with_index(1) do |book, i|
       puts "#{i}. #{book.title} by #{book.author}"
     end
   end
 
   def menu
-
     input = nil
     while input != "exit"
       puts "Enter the number of the book you'd like more info on or type list to see the books again or or type exit:"
     input = gets.strip.downcase
 
-    if input.to_i > 0 #string to integer is always 0
-      the_book = @books[input.to_i - 1]
-      puts "#{the_book.title} by #{the_book.author}"
+    if input.to_i.between?(1, BestSellers::Book.all.size) #string to integer is always 0
+      the_book = BestSellers::Book.find(input)
+      puts "Title: #{the_book.title}"
+      puts "Author: #{the_book.author}"
+      puts "Date Published: #{the_book.published_date}"
     elsif input.to_i == "list"
       list_books
     else
@@ -38,7 +39,7 @@ class BestSellers::CLI
   end
 
   def goodbye
-    puts "Byeeeee"
+    puts "Goodbye"
   end
 
 end
