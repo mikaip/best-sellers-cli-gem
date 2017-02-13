@@ -12,7 +12,7 @@ class BestSellers::CLI
   end
 
   def list_books
-    puts "Here are the top ten books in Trade Paperback Fiction. Which book would you like to learn more information about?"
+    puts "Here are the top ten books in Trade Paperback Fiction. Which book would you like to learn more information about?"  #Should also try asking user to choose between different categories/lists 
 
     BestSellers::Book.all.each.with_index(1) do |book, i|
       puts "#{i}. #{book.title} by #{book.author}"
@@ -22,7 +22,7 @@ class BestSellers::CLI
   def menu
     input = nil
     while input != "exit"
-      puts "Enter the number of the book you'd like more info on or type list to see the books again or or type exit:"
+      puts "Enter the number of the book for more details, or type list to see the books again or type exit:"
     input = gets.strip.downcase
 
     if input.to_i.between?(1, BestSellers::Book.all.size) #string to integer is always 0
@@ -30,6 +30,7 @@ class BestSellers::CLI
       puts "Title: #{the_book.title}"
       puts "Author: #{the_book.author}"
       puts "Date Published: #{the_book.published_date}"
+      puts "Price: #{the_book.price}"
     elsif input.to_i == "list"
       list_books
     else
@@ -39,7 +40,7 @@ class BestSellers::CLI
   end
 
   def goodbye
-    puts "Goodbye"
+    puts "Goodbye!"
   end
 
 end
