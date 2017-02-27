@@ -1,3 +1,4 @@
+require 'pry'
 class BestSellers::Book
 
   attr_accessor :title, :author, :published_date, :price
@@ -15,11 +16,11 @@ class BestSellers::Book
     @@all
   end
 
-  def save
+  def save  #an instance of itself
     @@all << self
   end
 
-  def self.find(id)
+  def self.find(id)  #finding an instance by index
     self.all[id.to_i - 1]
  #   error was: /home/pkim2320-24516/code/labs/best_sellers/lib/best_sellers/book.rb:22:in `find': undefined method `-'
  # for "3":String (NoMethodError)
@@ -31,12 +32,12 @@ class BestSellers::Book
 
   # def self.today
   #
-  #   #I should return list of books
+  #   #I should return list of books with properties
   #
   #   #scrape site and return books
   #   doc = Nokogiri::HTML(open("http://www.barnesandnoble.com/b/the-new-york-times-bestsellers-trade-paperback-fiction/_/N-1p3v"))
   #
-  #
+  # Would Extract the properties of the book, instantiate a book, then return an array of the books
   #   book_1 = self.new
   #     book_1.title = doc.search("p.product-info-title a")[0].text
   #     book_1.author = doc.css("span.contributors a")[0].text.strip
@@ -55,10 +56,13 @@ class BestSellers::Book
   #       [book_1, book_2, book_3]
   # end
 
+
+
 # CLass methods
 
 def self.book_titles
   @@book_titles = doc.search("p.product-info-title a").collect{|e| e.text}
+  # using collect - end up with an array of text and not elements
 end
 
 def self.book_authors
@@ -75,8 +79,8 @@ end
 
 
 
-# This is from following the "Rebuilding Concert Gem" video
-# Iterate over the data
+# This is from following the "Rebuilding Concert Gem" video AND "best restaurants" example
+# Get data, Iterate over the data, Create book objects
 def self.scrape_all
   (0..9).each do |i|
     book_title = book_titles[i]
@@ -86,6 +90,7 @@ def self.scrape_all
 
 
 # instance variables
+# assigning to properties
     book = BestSellers::Book.new
     book.title = book_title
     book.author = book_author
@@ -93,6 +98,8 @@ def self.scrape_all
     book.price = book_price
     book.save
   end
+
+  binding.pry
 end
 
 end

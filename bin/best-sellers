@@ -2,3 +2,8 @@
 
 require_relative '../lib/best_sellers'
 BestSellers::CLI.new.call
+# instantiate a class CLI with new
+# load interpreter, load environment
+
+
+# permission denied for running  bin/best-sellers ??
